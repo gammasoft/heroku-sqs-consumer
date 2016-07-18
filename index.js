@@ -88,8 +88,6 @@ HerokuSqsConsumer.prototype._handleMessage = function (handleMessage) {
 }
 
 function stopDynos(options) {
-    var request = require('request');
-
     request({
         method: 'PATCH',
         url: 'https://api.heroku.com/apps/' + options.app + '/formation/' + options.processType,
@@ -106,6 +104,7 @@ function stopDynos(options) {
         }
 
         if(res.statusCode !== 200) {
+            console.log(body);
             console.log('Problem shutting down Heroku, status code was not OK: ' + res.statusCode);
         }
     });
