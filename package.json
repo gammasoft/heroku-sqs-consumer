@@ -1,6 +1,6 @@
 {
   "name": "heroku-sqs-consumer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Consumes SQS messages from Heroku, and shutdown your working dynos when queue is drained",
   "main": "index.js",
   "scripts": {

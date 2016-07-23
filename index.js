@@ -10,6 +10,11 @@ function HerokuSqsConsumer (options) {
         handleMessage: this._handleMessage(options.handleMessage)
     });
 
+    app.on('error', function (err) {
+        console.log(err);
+        throw err;
+    });
+
     this._app = app;
     this._lastJobDone = null;
     this._isHandlingMessage = false;
@@ -100,7 +105,7 @@ function stopDynos(options) {
         })
     }, function(err, res, body) {
         if(err) {
-            throw err;
+            throw err; // TODO: Não lançar
         }
 
         if(res.statusCode !== 200) {
